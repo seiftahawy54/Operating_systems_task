@@ -130,11 +130,32 @@ void initFileManagement()
     }
 }
 // End files manager
+// Start symblic link files
 
+void symbolicLinkFiles()
+{
+    // Files variabls.
+    string firstFile, secondFile, command;
+    // Prompting user to enter file to link
+    cout << "Please enter first file\n" << endl;
+    cin >> firstFile;
+    // Prompting user to enter file to destination
+    cout << "Please enter second file\n" << endl;
+    cin >> secondFile;
+    // Concatenate command.
+    command += "ln -s " + firstFile + " " + secondFile;
+    // covert the string command into array of characters.
+    const char * cmd = command.c_str();
+    // Make system call.
+    system(cmd);
+    cout << "\nSymblic link folder is created!\n" << endl;
+}
+
+// End symblic link files
 // Start Files handler function
-// handle system function
 void handleSystem(int num)
 {
+    // handle system function
     if (num == 1)
     {
         listFilesAndFolders();
@@ -149,7 +170,7 @@ void handleSystem(int num)
     }
     else if (num == 4)
     {
-        system("ls");
+        symbolicLinkFiles();
     }
     else if (num == 5)
     {
